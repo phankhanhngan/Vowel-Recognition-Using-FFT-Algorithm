@@ -10,13 +10,16 @@ nguoikt = {'23MTL\','24FTL\','25MLM\','27MCM\','28MVN\','29MHN\','30FTN\','32MTP
 
 N_FFT = {512,1024,2048};
 
-%================================== TINH TOAN ============================
-
 % Khoi tao cell array voi 21 hang, 5 cot, moi cell la vecto trong
 data_remove_silence=cell(21,5);
 data_average_fft=cell(21,5);
 data_speciality_vowel = cell(5);
 
+% Khoi tao cell array voi 21 hang, 5 cot, moi cell la vecto trong
+data_remove_silence_kt=cell(21,5);
+data_average_fft_kt=cell(21,5);
+
+%================================== TINH TOAN ============================
 % chung ta co 21 nguoi va 5 nguyen am, tuong ung voi 2 mang nguoi{} va 
 % nguyenam{}
 
@@ -24,15 +27,17 @@ for i=1:21
     for j=1:5
          %Tao duong dan toi file
         url1 = strcat(url,nguoi{i},nguyenam{j});
+        url1kt = strcat(urlkt,nguoikt{i},nguyenam{j});
         %Doc data tu file
         [data,fs] = audioread(url1);
+        [datakt,fskt] = audioread(url1kt);
         %remove silence nguoi thu i, nguyen am thu j
         data_remove_silence{i,j} = speech_silence_disc(data,fs);
+        data_remove_silence_kt{i,j} = speech_silence_disc(datakt,fskt);
     end
 end
 
 for loop=1:3
-    disp(' ');
     disp(strcat('N_FFT = ', num2str(N_FFT{loop})));
     for i=1:21
         for j=1:5
@@ -46,29 +51,12 @@ for loop=1:3
     %data_average_fft{i,j}: vector dac trung cua nguoi thu i, i:1->21, nguyen
     % am thu j j:1->5
 
-    data_speciality_vowel = dataSpecialityVowel(data_average_fft);
+    dataSpecialityVowel(data_average
 
-    % Bieu dien vector dac trung cua 5 nguyen am bang do thi voi N_FFT =
-    % 512,1024,2048
-    plotGraph(data_speciality_vowel,fs,label, N_FFT{loop});
+    % Bieu dien vector dac trung cua 5 nguyen am bang do thi
+    plotGraph(data_speciality_vowel,fs,label);
 
  %================================== KIEM THU ============================
- 
-% Khoi tao cell array voi 21 hang, 5 cot, moi cell la vecto trong
-data_remove_silence_kt=cell(21,5);
-data_average_fft_kt=cell(21,5);
-
- for i=1:21
-    for j=1:5
-         %Tao duong dan toi file
-        url1kt = strcat(urlkt,nguoikt{i},nguyenam{j});
-        %Doc data tu file
-        [datakt,fskt] = audioread(url1kt);
-        %remove silence nguoi thu i, nguyen am thu j
-        data_remove_silence_kt{i,j} = speech_silence_disc(datakt,fskt);
-    end
- end
-
     for i=1:21
         for j=1:5
             % calc fft
@@ -76,11 +64,9 @@ data_average_fft_kt=cell(21,5);
         end
     end
 
-    testing(data_speciality_vowel,data_average_fft_kt, label, nguoikt, nguyenam);
-    disp(' ');
-    disp(' ');
-end
+    testing(data_speciality_vowel,data_average_fft_kt, label);
 
+end
 
 
 

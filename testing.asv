@@ -18,10 +18,10 @@ function [  ] = testing( data_speciality_vowel, data_average_fft_kt, label, nguo
                 end
             end
             if(strcmp(set_label,label(i)))
-                count_correct(i) = count_correct(i) + 1;
-                disp(strcat(nguoikt{h}, ' ', nguyenam{i}, ' - Doan nhan duoc thanh: ', set_label, ' -> Dung'));
+                count_correct(i) = count_correct + 1;
+                disp(strcat(nguoikt{h}, ' ', nguyenam{i}, ' - Doan nhan: ', set_label, ' -> Dung'));
             else 
-                disp(strcat(nguoikt{h}, ' ', nguyenam{i}, ' - Doan nhan duoc thanh: ', set_label, ' -> Sai'));
+                disp(strcat(nguoikt{h}, ' ', nguyenam{i}, ' - Doan nhan: ', set_label, ' -> Sai'));
             end
             for k=1:5
                 if(strcmp(set_label, label(k)))
@@ -29,17 +29,9 @@ function [  ] = testing( data_speciality_vowel, data_average_fft_kt, label, nguo
                 end
             end
         end
-        disp(' ');
+        disp(strcat('% nhan dang dung ', label(i), ': ', num2str(count_correct/21*100)));
+        count_correct = 0;
     end
-    
-    disp(' ');
-    
-    for i=1:5
-        disp(strcat('% NHAN DANG DUNG ', label(i), ': ', num2str(count_correct(i)/21*100)));
-    end
-    
-    disp(' ');
-    disp('MA TRAN NHAM LAN:');
     disp(confusion_matrix);
 end
    

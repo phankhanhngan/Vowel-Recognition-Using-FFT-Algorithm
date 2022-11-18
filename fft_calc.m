@@ -8,7 +8,7 @@ function [ fft_vector ] = fft_calc( data_without_silence, fs, N_FFT )
         start = floor((1/3)*length(data_without_silence));
         endd = floor((2/3)*length(data_without_silence ));
         data_without_silence  = data_without_silence (start:endd);
-        f_d = 0.03;
+        f_d = 0.025;
         %framing data sau khi remove silence va lay phan o giua 3 phan
         %0.03 vi trong video thay noi la 0.03 :v
         frames = framing(data_without_silence , fs, f_d);

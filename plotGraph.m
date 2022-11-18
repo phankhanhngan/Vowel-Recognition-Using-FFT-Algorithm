@@ -1,4 +1,4 @@
-function [  ] = plotGraph( data_speciality_vowel, fs, label)
+function [  ] = plotGraph( data_speciality_vowel, fs, label, N_FFT)
 %PLOT Summary of this function goes here
 %   Detailed explanation goes here
     line_color = ['b' 'g' 'y' 'c' 'm'];
@@ -26,7 +26,7 @@ function [  ] = plotGraph( data_speciality_vowel, fs, label)
     
     xlabel('Frequency (Hz)');
     ylabel('Magnitude');
-    title('Vector dac trung bieu dien cac nguyen am');
+    title(strcat('Vector dac trung bieu dien 5 nguyen am (N-FFT=',num2str(N_FFT),')'));
     legend(ca, 'Location', 'northeast');
     
 %     figure;
