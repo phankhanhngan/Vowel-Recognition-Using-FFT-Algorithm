@@ -76,7 +76,7 @@ data_average_fft_kt=cell(21,5);
         end
     end
 
-    testing(data_speciality_vowel,data_average_fft_kt, label, nguoikt, nguyenam);
+    testing(data_speciality_vowel,data_average_fft_kt, label, nguoikt, nguyenam, N_FFT{loop});
     disp(' ');
     disp(' ');
 end
