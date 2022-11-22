@@ -1,5 +1,5 @@
 function [ data_speciality_vowel ] = dataSpecialityVowel( data_average_fft )
-%This function is used for finding the 
+%This function is used for finding the special vector of each vowel
 %   Detailed explanation goes here
     for l= 1:5
         data_speciality_vowel{l} = 0;

@@ -3,17 +3,12 @@ function [  ] = plotGraph( data_speciality_vowel, fs, label, N_FFT)
 %   Detailed explanation goes here
     line_color = ['b' 'g' 'y' 'c' 'm'];
     
-    N=fs*0.03;
-    fs=16000;
-
+    N=fs*0.025;
     bin_vals = [0 : N-1];
-
     f_axis = bin_vals*fs/N;
-
     N_2 = ceil(N/2);
-    
     ca = cell(1, length(line_color));
-    
+   
     figure;
     
     for k = 1 : length(line_color)
@@ -28,7 +23,7 @@ function [  ] = plotGraph( data_speciality_vowel, fs, label, N_FFT)
     ylabel('Magnitude');
     title(strcat('Vector dac trung bieu dien 5 nguyen am (N-FFT=',num2str(N_FFT),')'));
     legend(ca, 'Location', 'northeast');
-    
+end  
 %     figure;
 %     subplot(5,1,1);
 %     plot(f_axis(1:N_2),data_speciality_vowel{1}(1:N_2));
@@ -55,5 +50,5 @@ function [  ] = plotGraph( data_speciality_vowel, fs, label, N_FFT)
 %     xlabel('Frequency (Hz)');
 %     ylabel('Magnitude');
 %     title('Vector dac trung bieu dien nguyen am u');
-end
+
 
