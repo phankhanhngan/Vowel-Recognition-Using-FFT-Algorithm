@@ -3,10 +3,8 @@ function [  ] = plotGraph( data_speciality_vowel, fs, label, N_FFT)
 %   Detailed explanation goes here
     line_color = ['b' 'g' 'y' 'c' 'm'];
     
-    N=fs*0.025;
-    bin_vals = [0 : N-1];
-    f_axis = bin_vals*fs/N;
-    N_2 = ceil(N/2);
+    f_axis = 0:fs/N_FFT:fs;
+    N_2 = ceil(N_FFT/2);
     ca = cell(1, length(line_color));
    
     figure;
@@ -14,7 +12,7 @@ function [  ] = plotGraph( data_speciality_vowel, fs, label, N_FFT)
     for k = 1 : length(line_color)
       ca{k} = sprintf('%s', label{k});
       hold on;
-      plot(f_axis(1:N_2),data_speciality_vowel{k}(1:N_2),'-', 'Color', line_color(k),'LineWidth',0.5)
+        plot(f_axis(1:N_2),data_speciality_vowel{k}(1:N_2),'-', 'Color', line_color(k),'LineWidth',0.5)
       grid on;
     end
     hold off;
